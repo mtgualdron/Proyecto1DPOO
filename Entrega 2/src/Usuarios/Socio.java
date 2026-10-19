@@ -10,12 +10,12 @@ import DeporteConjunto.ComposicionEquipo;
 import DeporteConjunto.DeporteConjunto;
 import DeporteConjunto.Equipo;
 import Excepciones.ClubException;
-import Deporteindividual.DisciplinaIndividual;
-import Deporteindividual.InscripcionIndividual;
-import Deporteindividual.Instalacion;
-import Deporteindividual.PartidoPractica;
-import Deporteindividual.PuntajeRanking;
-import Deporteindividual.Reserva;
+import DeporteIndividual.DisciplinaIndividual;
+import DeporteIndividual.InscripcionIndividual;
+import DeporteIndividual.Instalacion;
+import DeporteIndividual.PartidoPractica;
+import DeporteIndividual.PuntajeRanking;
+import DeporteIndividual.Reserva;
 import Partidos.EstadisticaPartido;
 import Partidos.Partido;
 
