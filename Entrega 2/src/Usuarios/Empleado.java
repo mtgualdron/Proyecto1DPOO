@@ -83,6 +83,16 @@ public abstract class Empleado extends Usuario{
         return limpia;
     }
     
+    void resolverSugerencia(String sugerencia, boolean aprobar) throws ClubException {
+        if (sugerencia == null || !sugerenciasPendientes.contains(sugerencia.trim())) {
+            throw new ClubException("No encontramos esa sugerencia entre las pendientes de " + getLogin() + ".");
+        }
+        sugerenciasPendientes.remove(sugerencia.trim());
+        if (aprobar) {
+            sugerenciasAprobadas.add(sugerencia.trim());
+        }
+    }
+    
     
     public String getCodigoDescuento() {
         return codigoDescuento;
