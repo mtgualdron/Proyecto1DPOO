@@ -6,18 +6,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import conjunto.ComposicionEquipo;
-import conjunto.DeporteConjunto;
-import conjunto.Equipo;
+import DeporteConjunto.ComposicionEquipo;
+import DeporteConjunto.DeporteConjunto;
+import DeporteConjunto.Equipo;
 import Excepciones.ClubException;
-import individual.DisciplinaIndividual;
-import individual.InscripcionIndividual;
-import individual.Instalacion;
-import individual.PartidoPractica;
-import individual.PuntajeRanking;
-import individual.Reserva;
-import partidos.EstadisticaPartido;
-import partidos.Partido;
+import Deporteindividual.DisciplinaIndividual;
+import Deporteindividual.InscripcionIndividual;
+import Deporteindividual.Instalacion;
+import Deporteindividual.PartidoPractica;
+import Deporteindividual.PuntajeRanking;
+import Deporteindividual.Reserva;
+import Partidos.EstadisticaPartido;
+import Partidos.Partido;
 
 
 public class Socio extends Usuario {

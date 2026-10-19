@@ -4,7 +4,7 @@ package Usuarios;
 import DeporteConjunto.Categoria;
 import DeporteConjunto.DeporteConjunto;
 import DeporteConjunto.Equipo;
-import Entrenamiento.SesionEntrenamiento;
+import Entrenamiento.SesionesEntrenamiento;
 import Excepciones.ClubException;
 import DeporteIndividual.Reserva;
 import Partidos.Partido;
