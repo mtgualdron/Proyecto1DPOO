@@ -1,0 +1,23 @@
+# ADMIN;login;contrasena | SOCIO;login;contrasena;edad;fisicoApto;puntos | ENTRENADOR/FISIOTERAPEUTA;login;contrasena;codigoDescuento;puntos
+ADMIN;admin;admin123
+ENTRENADOR;coach;coach123;COACH1;0
+ENTRENADOR;coach2;coach123;COACH2;0
+FISIOTERAPEUTA;fisio;fisio123;FISIO1;0
+SOCIO;a1;1234;20;true;0
+SOCIO;a2;1234;21;true;0
+SOCIO;a3;1234;22;true;0
+SOCIO;a4;1234;23;true;0
+SOCIO;a5;1234;24;true;0
+SOCIO;a6;1234;25;true;0
+SOCIO;a7;1234;26;true;0
+SOCIO;b1;1234;20;true;0
+SOCIO;b2;1234;21;true;0
+SOCIO;b3;1234;22;true;0
+SOCIO;b4;1234;23;true;0
+SOCIO;b5;1234;24;true;0
+SOCIO;b6;1234;25;true;0
+SOCIO;b7;1234;26;true;0
+SOCIO;nuevo;1234;22;true;0
+SOCIO;juan;1234;25;true;297
+SOCIO;maria;1234;24;true;0
+SOCIO;pedro;1234;16;true;0

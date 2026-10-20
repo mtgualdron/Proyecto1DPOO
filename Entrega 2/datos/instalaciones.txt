@@ -1,0 +1,6 @@
+# nombre;tipo;capacidad;techada;disciplina(o -)
+Cancha Tenis 1;Cancha de tenis;4;true;Tenis
+Cancha Tenis 2;Cancha de tenis;4;false;Tenis
+Cancha Padel 1;Cancha de pádel;4;false;Pádel
+Mesa 1;Mesa de tenis de mesa;2;true;Tenis de mesa
+Cancha Principal;Cancha de fútbol;22;false;-

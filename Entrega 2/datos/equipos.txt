@@ -1,0 +1,4 @@
+# nombre;deporte;categoria;cupoMaximo
+Águilas;Fútbol;Mayores;12
+Búhos;Fútbol;Mayores;12
+Juveniles;Fútbol;Sub-17;12

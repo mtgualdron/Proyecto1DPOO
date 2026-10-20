@@ -1,0 +1,15 @@
+# equipo;loginSocio;posicion;numeroCamiseta
+Águilas;a1;Delantero;1
+Águilas;a2;Delantero;2
+Águilas;a3;Delantero;3
+Águilas;a4;Delantero;4
+Águilas;a5;Delantero;5
+Águilas;a6;Delantero;6
+Águilas;a7;Delantero;7
+Búhos;b1;Defensa;1
+Búhos;b2;Defensa;2
+Búhos;b3;Defensa;3
+Búhos;b4;Defensa;4
+Búhos;b5;Defensa;5
+Búhos;b6;Defensa;6
+Búhos;b7;Defensa;7

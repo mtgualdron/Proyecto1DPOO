@@ -1,0 +1,4 @@
+# idSesion;loginSocio;estado(ASISTIO/FALLO);nota(-1 si no hay);comentario
+1;a1;ASISTIO;8;Muy buen ritmo
+1;a2;FALLO;-1;
+1;a3;ASISTIO;6;Debe mejorar la resistencia

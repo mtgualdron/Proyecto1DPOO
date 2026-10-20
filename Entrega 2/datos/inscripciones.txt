@@ -1,0 +1,4 @@
+# loginSocio;disciplina;nivel(PRINCIPIANTE/INTERMEDIO/AVANZADO);elo
+juan;Tenis;INTERMEDIO;1250
+juan;Pádel;AVANZADO;1500
+maria;Tenis;PRINCIPIANTE;1000

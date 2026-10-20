@@ -1,0 +1,2 @@
+# id;tipo;fecha(AAAA-MM-DD);equipoLocal;equipoVisitante;marcadorLocal;marcadorVisitante
+1;INTERNO;2026-10-10;Águilas;Búhos;2;2

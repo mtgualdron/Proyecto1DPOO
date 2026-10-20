@@ -1,0 +1,4 @@
+# nombre;minimoJugadores;permiteEmpate
+Fútbol;7;true
+Baloncesto;5;false
+Voleibol;6;false

@@ -1,0 +1,6 @@
+# idPartido;loginSocio;FUTBOL;goles;asistencias;amarillas;roja | BALONCESTO;puntos;rebotes | VOLEIBOL;aces;bloqueos
+1;a1;FUTBOL;1;0;2;false
+1;a2;FUTBOL;1;0;0;false
+1;a3;FUTBOL;0;1;1;false
+1;b2;FUTBOL;0;0;0;true
+1;b5;FUTBOL;1;1;0;false
