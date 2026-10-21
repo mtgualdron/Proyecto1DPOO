@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import Excepciones.ClubException;
-import Tienda.Venta;
+import TiendaCafeteria.Venta;
 
 public abstract class Usuario {
 	

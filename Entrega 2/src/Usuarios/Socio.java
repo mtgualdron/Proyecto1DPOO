@@ -44,6 +44,7 @@ public class Socio extends Usuario {
 	        this.rankings = new ArrayList<>();
 	        this.reservas = new ArrayList<>();
 	        this.partidos = new ArrayList<>();
+	       
 	    }
 
    public boolean isFisicoApto() {
@@ -255,6 +256,7 @@ public class Socio extends Usuario {
 			partidos.add(p);
     }
 }
+	
 	}
 
 

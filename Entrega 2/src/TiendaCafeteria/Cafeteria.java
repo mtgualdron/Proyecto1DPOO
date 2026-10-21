@@ -1,13 +1,14 @@
 package TiendaCafeteria;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import usuarios.Socio;
-import usuarios.Administrador;
-import deporteindividual.Reserva;
-import deporteindividual.Instalacion;
+import Usuarios.Socio;
+import Usuarios.Usuario;
+import Usuarios.Administrador;
+import DeporteIndividual.Reserva;
+import DeporteIndividual.Instalacion;
 
 public class Cafeteria {
 	
@@ -15,6 +16,7 @@ public class Cafeteria {
 	
     private List<Bebida> bebidas;
     private List<Snack> snacks;
+    private List<Venta> ventas;
     
     public static final double IMPUESTO_CONSUMO = 0.08; 
     public static final double PROPINA_SUGERIDA = 0.10;  
@@ -25,42 +27,46 @@ public class Cafeteria {
         this.snacks = new ArrayList<>();
     }
 
-    // metodos 
+    //Metod
+    
     
     public Venta vender(Socio comprador, List<Bebida> bebidas, List<Snack> snacks, double propina) {
-        double subtotal = 0.0;
+        if (comprador == null)
+            throw new IllegalArgumentException("El comprador es obligatorio");
+        boolean sinBebidas = bebidas == null || bebidas.isEmpty();
+        boolean sinSnacks = snacks == null || snacks.isEmpty();
+        if (sinBebidas && sinSnacks)
+            throw new IllegalArgumentException("Debe incluir al menos un producto");
+        if (propina < 0)
+            throw new IllegalArgumentException("La propina no puede ser negativa");
 
         
-        if (bebidas != null) {
+        boolean hayCaliente = false;
+        if (!sinBebidas) {
             for (Bebida b : bebidas) {
-                if (b != null) {
-                    subtotal += b.getPrecio();
-                }
+                if (!puedeDespachar(b, comprador))
+                    throw new IllegalArgumentException(
+                        "No se puede despachar bebida caliente dentro de esta instalación");
+                if (b.isCaliente()) hayCaliente = true;
             }
         }
 
-      
-        if (snacks != null) {
-            for (Snack s : snacks) {
-                if (s != null) {
-                    subtotal += s.getPrecio();
-                }
-            }
-        }
+        double subtotal = 0.0;
+        if (!sinBebidas) for (Bebida b : bebidas) subtotal += b.getPrecio();
+        if (!sinSnacks)  for (Snack s : snacks)   subtotal += s.getPrecio();
 
         double impuesto = calcularImpuestoConsumo(subtotal);
-        double total = subtotal + impuesto + propina;
 
-  
-        java.util.Date fechaActual = new java.util.Date();
-        Venta nuevaVenta = new Venta(fechaActual, total, "Cafeteria", comprador);
+        Venta venta = new Venta(LocalDate.now(), "CAFETERIA", subtotal, 0.0, impuesto, propina, comprador);
 
-        
-        if (comprador != null) {
-            comprador.registrarCompra(nuevaVenta);
-        }
+        if (hayCaliente) comprador.recibirBebidaCaliente(); // revisar como solucionar
+        comprador.registrarCompra(venta);   
+        ventas.add(venta); 
+        return venta;
+    }
 
-        return nuevaVenta;
+    public boolean puedeDespachar(Bebida b, Socio s) {
+        return !(b.isCaliente() && s.estaEnInstalacionSinBebidaCaliente());
     }
 
        

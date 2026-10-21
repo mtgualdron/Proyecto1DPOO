@@ -1,10 +1,10 @@
 package TiendaCafeteria;
 
-import java.util.Date;
+import java.time.LocalDate;
 import Usuarios.Usuario;
 
 public class Venta {
-    private Date fecha;
+    private LocalDate fecha;
     private String rubro;
     private double impuesto;
     private double propina;
@@ -12,15 +12,17 @@ public class Venta {
     private double descuento;
     private Usuario comprador;
 
-    public Venta(Date fecha, String rubro, double valor, double impuesto, double propina, double descuento, Usuario comprador) {
+    	// constructor
+    public Venta(LocalDate fecha, String rubro, double valor, double descuento, double impuesto, double propina, Usuario comprador) {
         this.fecha = fecha;
         this.rubro = rubro;
         this.valor = valor;
+        this.descuento = descuento;
         this.impuesto = impuesto;
         this.propina = propina;
-        this.descuento = descuento;
         this.comprador = comprador;
     }
+    
     
 
     public double calcularTotal() {
@@ -40,7 +42,7 @@ public class Venta {
     
     // getters y setters 
 
-    public Date getFecha() { 
+    public LocalDate getFecha() { 
     	return fecha; 
     	}
     public String getRubro() { 
