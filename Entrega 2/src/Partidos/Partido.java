@@ -6,6 +6,7 @@ import java.util.List;
 
 import Usuarios.Socio;
 import DeporteConjunto.DeporteConjunto;
+import DeporteConjunto.Equipo;
 
 public abstract class Partido {
 
@@ -16,6 +17,7 @@ public abstract class Partido {
     private DeporteConjunto deporte;
     private List<EstadisticaPartido> estadisticas;
     private List<Socio> participantes;
+    protected List<Equipo> equiposParticipantes;
 
     // construtctor
     public Partido(Date fecha, DeporteConjunto deporte) {
@@ -59,16 +61,22 @@ public abstract class Partido {
     public void agregarParticipante(Socio socio) { 
         this.participantes.add(socio); 
     }
-}
 
-    public boolean puedeJugarse() {
-    	 /** Restricción de mínimo (7 fútbol, 5 baloncesto, 6 voleibol)  */
-    	 for (Equipo e : getEquiposDelClub()) {
-             if (!e.cumpleMinimoJugadores()) return false;
-         }
-         return true;
     	
-    }
+    public boolean puedeJugarse(Equipo equipo) {
+     /** Restricción de mínimo (7 fútbol, 5 baloncesto, 6 voleibol)  */
+    
+            if (equiposParticipantes == null || equiposParticipantes.isEmpty()) {
+                return false;
+            }
+            for (Equipo e : equiposParticipantes) {
+                if (e != null && !e.cumpleMinimoJugadores()) {
+                    return false; 
+                }
+            }
+
+            return true; 
+        }
 
     public void registrarMarcador(int local, int visitante) {
     	/** marcador final de cada partido y sin empate en baloncesto ni voleibol. En voleibol el marcador son sets */
@@ -86,22 +94,43 @@ public abstract class Partido {
     public EstadisticaPartido obtenerEstadistica(Socio socio) {
     	 /**Devuelve null si el jugador no tiene estadística */
     	for (EstadisticaPartido estadistica : estadisticas) {
-            if (estadistica.getJugador().equals(socio)) 
+            if (estadistica.getSocio().equals(socio)) 
    
             	return estadistica;
         }
         return null;
+    }
+    // agregar metodo
+    public boolean corresponde(EstadisticaPartido estadistica) { 
+        if (estadistica == null || this.deporte == null) {
+            return false;
+        }
+        
+        String nombreDeporte = this.deporte.getNombre().toLowerCase();
+        
+        // Validar según el deporte del partido
+        if (nombreDeporte.contains("futbol") && estadistica instanceof EstadisticaFutbol) {
+            return true;
+        }
+        if (nombreDeporte.contains("baloncesto") && estadistica instanceof EstadisticaBaloncesto) {
+            return true;
+        }
+        if (nombreDeporte.contains("voleibol") && estadistica instanceof EstadisticaVoleibol) {
+            return true;
+        }
+        
+        return false; 
     }
 
     public void agregarEstadistica(EstadisticaPartido estadistica) {
     	// pendiente descripcion
     	   if (estadistica == null)
                throw new IllegalArgumentException("La estadística es obligatoria");
-           if (!participantes.contains(estadistica.getJugador()))
+           if (!participantes.contains(estadistica.getSocio()))
                throw new IllegalArgumentException("El jugador no participó en el partido");
-           if (obtenerEstadistica(estadistica.getJugador()) != null)
+           if (obtenerEstadistica(estadistica.getSocio()) != null)
                throw new IllegalArgumentException("El jugador ya tiene estadística en este partido");
-           if (!corresponde(estadistica))
+           if (!corresponde(estadistica)) // REVISAR
                throw new IllegalArgumentException("La estadística no corresponde al deporte");
         this.estadisticas.add(estadistica);
     }

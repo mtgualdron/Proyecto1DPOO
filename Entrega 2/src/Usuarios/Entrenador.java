@@ -9,6 +9,10 @@ import java.util.List;
 
 
 import Excepciones.ClubException;
+import Entrenamiento.SesionesEntrenamiento;
+import Partidos.EstadisticaFutbol;
+import Partidos.Partido;
+import Partidos.EstadisticaPartido;
 
 public class Entrenador extends Empleado {
 	

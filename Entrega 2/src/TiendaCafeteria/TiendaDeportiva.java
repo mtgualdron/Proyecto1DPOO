@@ -62,13 +62,13 @@ public class TiendaDeportiva {
 
         //Descontar inventario
         for (Map.Entry<Articulo, Integer> item : articulos.entrySet()) {
-            item.getKey().descontar(item.getValue());
+        	item.getKey().setCantidadDisponible(item.getKey().getCantidadDisponible() - item.getValue());
         }
 
         // Registrar la venta (fecha y rubro: Restricción de ventas)
-        Venta venta = new Venta(LocalDate.now(), "TIENDA", subtotal, descuento, iva, 0);
+        Venta venta = new Venta(LocalDate.now(), "TIENDA", subtotal, descuento, iva, 0, comprador);
         ventas.add(venta);
-        comprador.registrarCompra(venta);   // historial y puntos del 2%
+        comprador.registrarCompra(venta);   
         return venta;
     }
 
