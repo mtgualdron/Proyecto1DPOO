@@ -1,0 +1,5 @@
+# nombre;caliente(true/false);precio
+Tinto;true;3000.0
+Capuchino;true;6000.0
+Jugo;false;5000.0
+Agua;false;2500.0

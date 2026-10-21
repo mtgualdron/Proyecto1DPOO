@@ -1,12 +1,21 @@
 package Usuarios;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import Excepciones.ClubException;
+import Tienda.Venta;
 
 public abstract class Usuario {
 	
+	public static final int pesos_punto = 1000;
+	public static final double valor_punto = 50.0;
+
 	private String login;
 	private String contraseña;
 	private int puntosFidelidad;
+	private List<Venta> historialdecompras;
 	
 	
 	public Usuario(String login, String contraseña) {
@@ -14,6 +23,7 @@ public abstract class Usuario {
 		this.login = login;
 		this.contraseña = contraseña;
 		this.puntosFidelidad = 0;
+		this.historialdecompras = new ArrayList<>();
 	}
 
 
@@ -58,14 +68,20 @@ public abstract class Usuario {
 		this.puntosFidelidad = puntosFidelidad;
 	}
 	
+	public List<Venta> getHistorialCompras() {
+		return Collections.unmodifiableList(historialdecompras);
+	}
+	public void setHistorialCompras() {
+		this.historialdecompras = historialdecompras;
+	}
+	
 	public boolean verificar (String login, String contraseña) {
 		return this.login.equals(login) && this.contraseña.equals(contraseña);
 	}
 	
 	public void acumularPuntos (double valorVenta) {
 		if (valorVenta >0) {
-			puntosFidelidad += valorVenta;
-		}
+			puntosFidelidad += (valorVenta / pesos_punto);}
 	}
 	public boolean tienePuntosSuficientes (int puntos) {
 		if (puntos > 0 && puntosFidelidad >= puntos) {
@@ -75,16 +91,23 @@ public abstract class Usuario {
 	}
 	
 	public int canjearPuntos (int puntos) {
-		if (tienePuntosSuficientes(puntos)) {
-			puntosFidelidad -= puntos;
-			return puntos;
+		if (puntos <= 0) {
+			throw new ClubException(" Indica una cantidad de puntos mayor que cero.");
 		}
-		return 0;
+		if (!tienePuntosSuficientes(puntos)) {
+			throw new ClubException(" Tienes " + puntosFidelidad
+					+ " puntos y quieres redimir " + puntos);
+		}
+		puntosFidelidad -= puntos;
+		return (int) ((puntos) * (valor_punto));
 	}
-
-
 	
-	
-	
+	public void registrarCompra(Venta v) {
+		if (v == null) {
+			throw new ClubException("no hay una venta para registrar.");
+		}
+		historialdecompras.add(v);
+		acumularPuntos(v.calcularTotal());
+	}
 
 }

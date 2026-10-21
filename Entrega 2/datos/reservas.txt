@@ -1,0 +1,2 @@
+# loginSocio;instalacion;inicio(AAAA-MM-DDTHH:mm);fin;numeroJugadores;modalidad
+juan;Cancha Tenis 1;2026-12-01T10:00;2026-12-01T11:00;2;SENCILLOS

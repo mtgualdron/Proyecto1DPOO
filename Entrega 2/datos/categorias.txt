@@ -1,0 +1,5 @@
+# nombre;edadMinima;edadMaxima
+Sub-13;0;12
+Sub-15;13;14
+Sub-17;15;16
+Mayores;17;120

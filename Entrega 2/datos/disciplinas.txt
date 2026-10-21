@@ -1,0 +1,4 @@
+# nombre;maxInstalacionesSimultaneas
+Tenis;1
+Pádel;2
+Tenis de mesa;2

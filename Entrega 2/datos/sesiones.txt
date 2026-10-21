@@ -1,0 +1,2 @@
+# id;fecha;hora;duracionMinutos;loginEntrenador;instalacion
+1;2026-10-15;16:00;90;coach;Cancha Principal
