@@ -4,33 +4,54 @@ import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 
-import DeporteConjunto.Equipo;
-import DeporteConjunto.DeporteConjunto;
+import deporteConjunto.Equipo;
+import deporteConjunto.DeporteConjunto;
 
 public class PartidoInterno extends Partido {
 
+	// atributos
     private List<Equipo> equiposParticipantes;
 
-    public PartidoInterno(Date fecha, DeporteConjunto deporte,
-                          List<Equipo> equiposParticipantes) super(fecha, deporte);
+    // Constructor 
+    public PartidoInterno(Date fecha, DeporteConjunto deporte, List<Equipo> equiposParticipantes) { 
+    	super(fecha, deporte);
         this.equiposParticipantes = new ArrayList<Equipo>(equiposParticipantes);
-    }
+    } 
+    
+    //metodos 
 
     public List<Equipo> getEquiposParticipantes() {
-        return new ArrayList<Equipo>(equiposParticipantes);
-    }
-
-    public void agregarEquipo(Equipo equipo) {
-        this.equiposParticipantes.add(equipo);
-    }
-
-    public void eliminarEquipo(Equipo equipo) {
-        this.equiposParticipantes.remove(equipo);
+    	
     }
 
     @Override
+    
+    /**
+  	Saber si el partido se puede jugar si: 
+     Debe haber exactamente 2 equipos inscritos.
+     Los equipos deben pertenecer a la misma categoría y deporte.
+     Cada equipo debe cumplir con el número mínimo de jugadores habilitados 
+         (7 en fútbol, 5 en baloncesto, 6 en voleibol).
+     */
     public boolean puedeJugarse() {
-    	//pediente
-        return false;
+    	if (equiposParticipantes.size() != 2) {
+            return false;
+        }
+
+        Equipo equipo1 = equiposParticipantes.get(0);
+        Equipo equipo2 = equiposParticipantes.get(1);
+
+        if (!equipo1.getCategoria().equals(equipo2.getCategoria())) {
+            return false;
+        }
+
+     
+        for (Equipo e : equiposParticipantes) {
+            if (!e.cumpleMinimoJugadores()) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

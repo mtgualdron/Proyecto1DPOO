@@ -3,25 +3,19 @@ package Partidos;
 import Usuarios.Socio; 
 
 public class EstadisticaVoleibol extends EstadisticaPartido {
-   
+   // atributos
+	
     private int aces;
     private int bloques;
-
-    public EstadisticaVoleibol(Socio socio, int aces, int bloques) {
-        super(socio); 
+    
+    // constructor 
+    public EstadisticaVoleibol(Socio socio, int aces, int bloques, Partido partido) {
+        super(socio, partido); 
         this.aces = aces;
         this.bloques = bloques;
     }
 
-    public void registrarAce() {
-        this.aces++;
-    }
-
-    public void registrarBloque() {
-        this.bloques++;
-    }
-
-   
+   // metodo getters y setters 
     public int getAces() {
         return aces;
     }

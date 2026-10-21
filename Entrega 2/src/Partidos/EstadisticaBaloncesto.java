@@ -4,11 +4,12 @@ import Usuarios.Socio;
 
 public class EstadisticaBaloncesto extends EstadisticaPartido {
    
+	// atributos
     private int puntos;
     private int rebotes;
 
-    public EstadisticaBaloncesto(Socio socio, int puntos, int rebotes) {
-        super(socio); 
+    public EstadisticaBaloncesto(Socio socio, Partido partido, int puntos, int rebotes) {
+        super(socio, partido); 
         this.puntos = puntos;
         this.rebotes = rebotes;
     }
@@ -19,10 +20,7 @@ public class EstadisticaBaloncesto extends EstadisticaPartido {
         }
     }
 
-    public void registrarRebote() {
-        this.rebotes++;
-    }
-
+  // metodos getters y setters 
     public int getPuntos() {
         return puntos;
     }

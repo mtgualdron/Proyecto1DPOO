@@ -1,6 +1,7 @@
 package TiendaCafeteria;
 
 import java.util.Date;
+import Usuarios.Usuario;
 
 public class Venta {
     private Date fecha;
@@ -9,15 +10,18 @@ public class Venta {
     private double propina;
     private double valor;
     private double descuento;
+    private Usuario comprador;
 
-    public Venta(Date fecha, String rubro, double valor, double impuesto, double propina, double descuento) {
+    public Venta(Date fecha, String rubro, double valor, double impuesto, double propina, double descuento, Usuario comprador) {
         this.fecha = fecha;
         this.rubro = rubro;
         this.valor = valor;
         this.impuesto = impuesto;
         this.propina = propina;
         this.descuento = descuento;
+        this.comprador = comprador;
     }
+    
 
     public double calcularTotal() {
         return (this.valor + this.impuesto + this.propina) - this.descuento;
@@ -28,8 +32,13 @@ public class Venta {
     }
 
     public boolean esRubro(String rubroBuscado) {
-        return this.rubro.equalsIgnoreCase(rubroBuscado);
+    	if (rubroBuscado == null || this.rubro == null) {
+        return false;
     }
+    return this.rubro.equalsIgnoreCase(rubroBuscado);
+}
+    
+    // getters y setters 
 
     public Date getFecha() { 
     	return fecha; 
@@ -40,4 +49,11 @@ public class Venta {
     public double getValor() { 
     	return valor; 
     	}
+    public Usuario getComprador() {
+    	return comprador; 
+    	}
+    public void setComprador(Usuario comprador) {
+    	this.comprador = comprador; 
+    	}
 }
+

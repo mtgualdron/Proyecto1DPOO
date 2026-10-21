@@ -8,12 +8,15 @@ import Competencias.EquipoExterno;
 import java.util.Date;
 
 public class PartidoCompetencia extends Partido {
+	
+	// atributos 
     private String institucionRival;
     private String escenario;
     private String local; 
     private Competencia competencia;
     private EquipoExterno equipoExterno; 
-
+    
+    // constructor 
     public PartidoCompetencia(Date fecha, String institucionRival, String escenario, String local, Competencia competencia, EquipoExterno equipoExterno) {
         super(fecha);
         this.institucionRival = institucionRival;
@@ -22,7 +25,8 @@ public class PartidoCompetencia extends Partido {
         this.competencia = competencia;
         this.equipoExterno = equipoExterno;
     }
-
+    
+    // metodos 
     public String getInstitucionRival() {
         return institucionRival;
     }
