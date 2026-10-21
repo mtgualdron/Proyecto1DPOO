@@ -1,7 +1,7 @@
 package Partidos;
 
 import java.util.Date;
-import DeporteConjuntos.DeporteConjunto;
+import DeporteConjunto.DeporteConjunto;
 import Competencias.Competencia;
 import Competencias.EquipoExterno;
 
