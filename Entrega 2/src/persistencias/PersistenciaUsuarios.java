@@ -3,6 +3,9 @@ import club.Club;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+import java.io.PrintWriter;
+import java.io.FileWriter;
+
 import java.io.IOException;
 
 import Usuarios.*;
@@ -56,7 +59,41 @@ public class PersistenciaUsuarios {
             }
         }
     }
+    public void guardarUsuarios(Club seneca, String carpeta) throws IOException, PersistenciaException{
+        String ruta = carpeta + "/" + ARCHIVO;
+        try(PrintWriter escritor = new PrintWriter(new FileWriter(ruta))){
+            for (Usuario usuario : seneca.getUsuarios()){
+                if (usuario instanceof Socio){
+                    Socio s = (Socio) usuario;
+                    String linea = "SOCIO" + SEPARADOR + s.getLogin() + SEPARADOR + s.getContraseña() + SEPARADOR + s.getEdad();
+                    escritor.println(linea);
+                }
+                else if (usuario instanceof Entrenador){
+                    Entrenador entren = (Entrenador) usuario;
+                    String linea = "ENTRENADOR"+ SEPARADOR + entren.getLogin() + SEPARADOR + entren.getContraseña() + entren.getCodigoDescuento();
+                    escritor.println(linea);
+                }
+                else if (usuario instanceof Fisioterapeuta){
+                    Fisioterapeuta fisio = (Fisioterapeuta) usuario;
+                    String linea = "FISIOTERAPEUTA" + SEPARADOR + fisio.getLogin() + SEPARADOR + fisio.getContraseña() + fisio.getCodigoDescuento();
+                    escritor.println(linea);
+                }
+                else if (usuario instanceof Administrador){
+                    Administrador admin = (Administrador) usuario;
+                    String linea = "ADMIN" + SEPARADOR + admin.getLogin()+ SEPARADOR + admin.getContraseña();
+                    escritor.println(linea);
+                }
+                else{
+                    throw new PersistenciaException("Usuario no soportado: "+ usuario.getLogin());
+                }
+            }
+        }
+            catch (IOException e){
+                throw new PersistenciaException("No se pudo escribir "+ ruta + ". Error: "+ e);
+            }
+        }
+    }
 
     
 
-}
+
