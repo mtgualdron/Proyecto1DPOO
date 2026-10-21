@@ -44,7 +44,6 @@ public class Socio extends Usuario {
 	        this.rankings = new ArrayList<>();
 	        this.reservas = new ArrayList<>();
 	        this.partidos = new ArrayList<>();
-	       
 	    }
 
    public boolean isFisicoApto() {
@@ -142,7 +141,7 @@ public class Socio extends Usuario {
 }
 
    public PartidoPractica programarPartidoParactica ( Socio rival, DisciplinaIndividual d) {
-	   return programarPartidoPractica (rival, d, LocalDate.now());
+	   return programarPartidoParactica (rival, d, LocalDate.now());
    }
    
    public PartidoPractica programarPartidoParactica ( Socio rival, DisciplinaIndividual d, LocalDate fecha) {
@@ -220,6 +219,11 @@ public class Socio extends Usuario {
 	   return reserva;
    	}
    
+   private DisciplinaIndividual buscarDisciplinaDe(Instalacion i) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
    public void agregarRegistroMedico(String descripcion, boolean apto, String fisio) throws ClubException {
 	    if (descripcion == null || descripcion.isEmpty()) {
 	        throw new ClubException("Escribe una descripción para el registro médico.");
@@ -256,7 +260,6 @@ public class Socio extends Usuario {
 			partidos.add(p);
     }
 }
-	
 	}
 
 

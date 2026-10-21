@@ -1,7 +1,7 @@
 package Entrenamiento;
 
 import Excepciones.ClubException;
-import Deporteindividual.Instalacion;
+import DeporteIndividual.Instalacion;
 import Usuarios.Entrenador;
 import Usuarios.Socio;
 
@@ -23,7 +23,7 @@ public class SesionesEntrenamiento {
     private final List<Asistencia> asistencias;
     
     public SesionesEntrenamiento(LocalDate fecha, LocalTime hora, int duracion, Entrenador entrenador,
-			Entrenamiento.Instalacion instalacion) {
+			DeporteIndividual.Instalacion instalacion) {
 		super();
 		this.fecha = fecha;
 		this.hora = hora;
@@ -94,4 +94,12 @@ public class SesionesEntrenamiento {
         return null;
     }
 
+
+public List<Asistencia> getAsistencias() {
+    return Collections.unmodifiableList(asistencias);
+}
+    
+    public List<Socio> getJugConvocados() {
+        return Collections.unmodifiableList(jugConvocados);
+    }
 }
