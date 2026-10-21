@@ -2,35 +2,36 @@ package Usuarios;
 
 import java.util.List;
 
+import DeporteIndividual.Instalacion;
+import Entrenamiento.Asistencia;
+import Entrenamiento.SesionesEntrenamiento;
+
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 
 import Excepciones.ClubException;
-import Entrenamiento.SesionesEntrenamiento;
-import Partidos.EstadisticaFutbol;
-import Partidos.Partido;
-import Partidos.EstadisticaPartido;
 
 public class Entrenador extends Empleado {
 	
-	private final List<SesionEntrenamiento> sesiones;
+	private final List<SesionesEntrenamiento> sesiones;
 
 	public Entrenador(String login, String contraseña, String codigoDescuento) throws ClubException {
 		super(login, contraseña, codigoDescuento);
 		this.sesiones = new ArrayList<>();
 		
 	}
-	public SesionEntrenamiento programarSesion(LocalDate fecha, LocalTime hora, int duracion, Instalacion insta)
+	public SesionesEntrenamiento programarSesion(LocalDate fecha, LocalTime hora, int duracion, Instalacion insta)
             throws ClubException {
-        SesionEntrenamiento sesion = new SesionEntrenamiento(fecha, hora, duracion, this, insta);
+        SesionesEntrenamiento sesion = new SesionesEntrenamiento(fecha, hora, duracion, this, insta);
         if (!sesion.disponibleIns(sesion.getInicio(), sesion.getFin())) {
             throw new ClubException("La instalación " + insta.getNombre()
                     + " ya está ocupada en ese horario. ¿Probamos con otra hora u otra instalación?");
         }
-        for (SesionEntrenamiento otra : sesiones) {
+        for (SesionesEntrenamiento otra : sesiones) {
             if (otra.getInicio().isBefore(sesion.getFin()) && sesion.getInicio().isBefore(otra.getFin())) {
                 throw new ClubException("Ya tienes otra sesión programada que se cruza con ese horario.");
             }
@@ -40,13 +41,13 @@ public class Entrenador extends Empleado {
         return sesion;
     }
 
-    public Asistencia registrarAsistencia(SesionEntrenamiento sesion, Socio jugador, String estado)
+    public Asistencia registrarAsistencia(SesionesEntrenamiento sesion, Socio jugador, String estado)
             throws ClubException {
         verificarSesionPropia(sesion);
         return sesion.registrarAsistencia(jugador, estado);
     }
 
-    public Asistencia registrarEvaluacion(SesionEntrenamiento sesion, Socio jugador, int nota, String comentario)
+    public Asistencia registrarEvaluacion(SesionesEntrenamiento sesion, Socio jugador, int nota, String comentario)
             throws ClubException {
         verificarSesionPropia(sesion);
         Asistencia asistencia = sesion.getAsistencia(jugador);
@@ -86,7 +87,7 @@ public class Entrenador extends Empleado {
         }
     }
 
-    private void verificarSesionPropia(SesionEntrenamiento sesion) throws ClubException {
+    private void verificarSesionPropia(SesionesEntrenamiento sesion) throws ClubException {
         if (sesion == null || !sesiones.contains(sesion)) {
             throw new ClubException("Esa sesión no está entre tus sesiones programadas.");
         }
@@ -96,7 +97,7 @@ public class Entrenador extends Empleado {
         return s == null ? "el jugador" : s.getLogin();
     }
 
-    public List<SesionEntrenamiento> getSesiones() {
+    public List<SesionesEntrenamiento> getSesiones() {
         return Collections.unmodifiableList(sesiones);
     }
 }
