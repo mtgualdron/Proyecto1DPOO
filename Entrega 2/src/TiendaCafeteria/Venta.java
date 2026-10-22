@@ -57,5 +57,36 @@ public class Venta {
     public void setComprador(Usuario comprador) {
     	this.comprador = comprador; 
     	}
+
+
+
+    public double getImpuesto() {
+        return impuesto;
+    }
+
+
+
+    public void setImpuesto(double impuesto) {
+        this.impuesto = impuesto;
+    }
+
+
+
+    public double getPropina() {
+        return propina;
+    }
+
+
+
+    public double getDescuento() {
+        return descuento;
+    }
+
+
+
+    public void setDescuento(double descuento) {
+        this.descuento = descuento;
+    }
+    
 }
 

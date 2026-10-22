@@ -136,4 +136,13 @@ public class Cafeteria {
 
         return true; 
     }
+
+    public List<Bebida> getBebidas() {
+        return bebidas;
+    }
+
+    public List<Snack> getSnacks() {
+        return snacks;
+    }
+    
 }
