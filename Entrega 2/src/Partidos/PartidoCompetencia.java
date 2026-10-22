@@ -17,8 +17,8 @@ public class PartidoCompetencia extends Partido {
     private EquipoExterno equipoExterno; 
     
     // constructor 
-    public PartidoCompetencia(Date fecha, String institucionRival, String escenario, String local, Competencia competencia, EquipoExterno equipoExterno) {
-        super(fecha);
+    public PartidoCompetencia(Date fecha, String institucionRival, String escenario, String local, Competencia competencia, EquipoExterno equipoExterno, DeporteConjunto deporte) {
+        super(fecha, deporte);
         this.institucionRival = institucionRival;
         this.escenario = escenario;
         this.local = local;
